@@ -20,7 +20,7 @@ L111=kron(L1,L11);
 %initialization
 GHZ=sqrt(2)*(L000+L111);
 Bell00=sqrt(2)*(L00+L11);
-rhoi=kron(L00*L00',kron())
+rhoi=kron(L00*L00',kron());
 
 %quantum gate
 
