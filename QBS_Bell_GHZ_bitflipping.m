@@ -1,6 +1,6 @@
 %% bit flipping noise
-    E0=sqrt(p)*[1 0;0 1];
-    E1=sqrt(1-p)*[0 1;1 0 ];
+    E0=sqrt(1-p)*[1 0;0 1];
+    E1=sqrt(p)*[0 1;1 0 ];
     e1 =mykron(eye(2),eye(2),E0,eye(2),E0,E0,E0);e2 =mykron(eye(2),eye(2),E0,eye(2),E0,E0,E1);
     e3 =mykron(eye(2),eye(2),E0,eye(2),E0,E1,E0);e4 =mykron(eye(2),eye(2),E0,eye(2),E0,E1,E1);
     e5 =mykron(eye(2),eye(2),E0,eye(2),E1,E0,E0);e6 =mykron(eye(2),eye(2),E0,eye(2),E1,E0,E1);
@@ -23,7 +23,8 @@ while(t(end)<=2^7)
     rho_out_bitflip=rho_out_bitflip+rho_all_bitflip(t,t);
     end
 end
-disp(rho_out_bitflip);
+expand(rho_out_bitflip);
+disp(collect(rho_out_bitflip,p));
     
 % calculate the fidelity
 f_out_bitflip=collect(phi_in'*rho_out_bitflip*phi_in);disp('f_out_bitflip =');disp(f_out_bitflip);

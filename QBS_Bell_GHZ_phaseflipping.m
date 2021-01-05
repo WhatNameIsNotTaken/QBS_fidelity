@@ -5,8 +5,8 @@ assume(p>0&p<1);
 
 %% noise
 %% phase flipping noise
-E0=sqrt(p)*[1 0;0 1];
-E1=sqrt(1-p)*[1 0;0 -1];
+E0=sqrt(1-p)*[1 0;0 1];
+E1=sqrt(p)*[1 0;0 -1];
 e1 =mykron(eye(2),eye(2),E0,eye(2),E0,E0,E0);e2 =mykron(eye(2),eye(2),E0,eye(2),E0,E0,E1);
 e3 =mykron(eye(2),eye(2),E0,eye(2),E0,E1,E0);e4 =mykron(eye(2),eye(2),E0,eye(2),E0,E1,E1);
 e5 =mykron(eye(2),eye(2),E0,eye(2),E1,E0,E0);e6 =mykron(eye(2),eye(2),E0,eye(2),E1,E0,E1);
@@ -29,7 +29,8 @@ while(t(end)<=2^7)
     rho_out_phaseflip=collect(rho_out_phaseflip+rho_all_phaseflip(t,t));
     end
 end
-disp(rho_out_phaseflip);
+expand(rho_out_phaseflip);
+disp(collect(rho_out_phaseflip,p));
     
 % calculate the fidelity
 f_out_phaseflip=collect(phi_in'*rho_out_phaseflip*phi_in);disp('f_out_phaseflip =');disp(f_out_phaseflip);
