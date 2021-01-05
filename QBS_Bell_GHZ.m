@@ -1,6 +1,6 @@
 close all;clear;clc;
-genhao2=sym(sqrt(0.5));
-%% 
+% genhao2=sym(sqrt(0.5));
+
 L0=[1;0];
 L1=[0;1];
 
@@ -19,9 +19,9 @@ L110=kron(L1,L10);
 L111=kron(L1,L11);
 
 %% initialization
-phi_in=L10;
-zeta=genhao2*(L000+L111);
-bell=genhao2*(L00+L11);
+phi_in=L11;
+zeta=sqrt(0.5)*(L000+L111);
+bell=sqrt(0.5)*(L00+L11);
 rho_in=phi_in*phi_in';
 % rho_source=kron(rho_in,kron(zeta*zeta',bell*bell'));
 rho_source=kron(phi_in,kron(bell,zeta))*kron(phi_in,kron(bell,zeta))';
@@ -49,7 +49,7 @@ t=t-32*ones(1,16);
 CNOT_AB(t,t)=kron(eye(8),[0 1;1 0]);
 
 %H_A
-H=genhao2*[1 1;1 -1];
+H=sqrt(0.5)*[1 1;1 -1];
 H_A=eye(size(rho_source));
 t1=(0:15)+1;
 t2=t1+16;
